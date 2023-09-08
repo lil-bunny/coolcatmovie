@@ -8,10 +8,7 @@ $(document).ready(function(){
 
 	const nowPlayingURL = apiBaseURL + 'movie/now_playing?api_key=' + apiKey;
 
-	//==============================================================================
-	//====================== Get "now playing" data on default. ====================
-	//=================== Change results when a genre is clicked on.================
-	//==============================================================================
+
 	function getNowPlayingData(){
 		$.getJSON(nowPlayingURL, function(nowPlayingData){
 			// console.log(nowPlayingData);
@@ -24,24 +21,8 @@ $(document).ready(function(){
 				// console.log(i)
 
 				$.getJSON(thisMovieUrl, function(movieKey){
-					// console.log(i);
-					// console.log(thisMovieUrl)
-					// console.log(movieKey)
-
-					//Need to go to that specific movie's URL to get the genres associated with it. (movieKey.id)
-					// var getGenreNameUrl = apiBaseURL + 'movie/' +movieKey.id+ '?api_key=' + apiKey;
-					// console.log(getGenreNameUrl);
-					// console.log(movieKey.id);
-
-					// $.getJSON(getGenreNameUrl, function(genreNames){
-					// 	// console.log(genreNames);//an object
-					// 	// console.log(genreNames.genres[0].name);
-
-					// 	for (let j=0; j<genreNames.genres.length; j++){
-					// 		var genre = genreNames.genres[0].name;
-					// 		// console.log(genre);
-					// 	}
-					// })
+				
+			
 
 					var poster = imageBaseUrl+'w300'+nowPlayingData.results[i].poster_path;
 					// console.log(poster);
@@ -276,17 +257,17 @@ $(document).ready(function(){
 		$('#movie-grid').html('');
 		event.preventDefault();
 		//search term is only concerned with what the user inputted 
-		//Get input with .val();
+
 		searchTerm = $('.form-control').val();
 		searchMovies();
 	})
 
 	function searchMovies(){
-		//need to include query in url. (ex: &query=boss+baby)
+
 		const searchMovieURL = apiBaseURL + 'search/movie?api_key=' + apiKey + '&language=en-US&page=1&include_adult=false&query=' + searchTerm;
-			// console.log(searchMovieURL);
+
 		$.getJSON(searchMovieURL, function(movieSearchResults){
-			// console.log(movieSearchResults);
+
 			for (let i = 0; i<movieSearchResults.results.length; i++){
 				var mid = movieSearchResults.results[i].id;
 				var thisMovieUrl = apiBaseURL+'movie/'+mid+'/videos?api_key=' + apiKey;		
