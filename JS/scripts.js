@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	// The base url for all API calls
+	var apiKey='865672ad29d7be91453e4fe96baeec3e';
 	var apiBaseURL = 'http://api.themoviedb.org/3/';
 
 	// URL in Authentication. Base URL of image
